@@ -30,7 +30,7 @@ jobs:
         run: pip install requests beautifulsoup4
 
       - name: 🔁 Run bundle updater
-        run: python scraper/update_bundles.py
+        run: python update_bundles.py
 
       - name: 📤 Commit updated JSON (if changed)
         run: |
