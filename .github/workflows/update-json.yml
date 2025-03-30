@@ -8,6 +8,8 @@ on:
         required: false
         default: "false"
 
+name: Update Humble Bundle JSON
+
 jobs:
   update:
     runs-on: ubuntu-latest
