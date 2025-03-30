@@ -1,23 +1,15 @@
+// manifest.json
 {
-    "manifest_version": 3,
-    "name": "Steam Wishlist Humble Tagger",
-    "version": "1.0",
-    "description": "Tags games on your Steam wishlist if they were included in past Humble Choice bundles.",
-    "permissions": ["scripting"],
-    "host_permissions": [
-      "https://store.steampowered.com/wishlist/*",
-      "https://steamcommunity.com/id/*/wishlist*",
-      "https://steamcommunity.com/profiles/*/wishlist*"
-    ],
-    "content_scripts": [
-      {
-        "matches": [
-          "https://store.steampowered.com/wishlist/*",
-          "https://steamcommunity.com/id/*/wishlist*",
-          "https://steamcommunity.com/profiles/*/wishlist*"
-        ],
-        "js": ["content.js"]
-      }
-    ]
-  }
-  
+  "manifest_version": 3,
+  "name": "Steam Wishlist Humble Tagger",
+  "version": "1.0",
+  "description": "Tags games on your Steam wishlist if they were included in past Humble Choice bundles.",
+  "permissions": ["scripting"],
+  "host_permissions": ["https://store.steampowered.com/wishlist/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://store.steampowered.com/wishlist/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
