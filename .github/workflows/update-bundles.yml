@@ -31,10 +31,13 @@ jobs:
       - name: 🔁 Run bundle updater
         run: python scraper/update_bundles.py
 
-      - name: 📤 Commit updated JSON (if changed)
+      - name: 📄 Commit updated JSON (if changed)
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
           git add humble_bundles.json
           git diff --quiet && git diff --staged --quiet || git commit -m "🔄 Monthly update of humble_bundles.json"
           git push
