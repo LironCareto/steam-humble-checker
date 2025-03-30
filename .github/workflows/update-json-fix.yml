@@ -1,0 +1,41 @@
+on:
+  schedule:
+    - cron: "0 9 1 * *"  # 1st of every month at 09:00 UTC
+  workflow_dispatch:     # Allows manual triggering
+    inputs:
+      force:
+        description: "Force run?"
+        required: false
+        default: "false"
+
+name: Update Humble Bundle JSON
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: scraper
+
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v3
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: 📦 Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: 🔁 Run bundle updater
+        run: python update_bundles.py
+
+      - name: 📤 Commit updated JSON (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add humble_bundles.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "🔄 Monthly update of humble_bundles.json"
+          git push
