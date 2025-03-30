@@ -43,3 +43,8 @@ You are free to use, modify, and distribute it. Contributions welcome!
 ---
 
 Made with ☕ and too many unplayed games.
+
+## Known issues
+- Games are identified by name, what can be a problem in case of games with the same name.
+- Encoding issue: Some characters like ™ may show up incorrectly (e.g. "â¢"). Needs fix in encoding.
+- Currently no automation for monthly updates.

@@ -1,4 +1,5 @@
-console.log("✅ Humble Tagger loaded!");
+// console.log("✅ Humble Tagger loaded!");
+const url = "https://github.com/LironCareto/steam-humble-checker/humble-bundles.json";
 
 const humbleBundles = {
     "September 2024": ["BeamNG.drive", "RimWorld"],
