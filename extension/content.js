@@ -45,7 +45,12 @@ const label = bundleType === "monthly"
   : `🟧 Humble Bundle (${bundleKey})`;
 const color = bundleType === "monthly" ? "#2196f3" : "#ff9800";
 
-          const tag = createTag(label, color);
+          const bundle = games.find(g => normalizeTitle(g.title) === gameTitle);
+const tag = document.createElement("a");
+tag.href = bundle?.steam_url || "#";
+tag.target = "_blank";
+tag.rel = "noopener noreferrer";
+tag.appendChild(createTag(label, color));
           titleElement.parentElement.style.position = "relative";
           titleElement.parentElement.appendChild(tag);
           break;

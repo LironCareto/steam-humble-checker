@@ -10,7 +10,7 @@ import re
 
 APPWS_URL = "https://appsolutelywonderful.com/humblechoice"
 HUMBLE_URL = "https://www.humblebundle.com/membership"
-OUTPUT_FILE = "humble_bundles.json"
+OUTPUT_FILE = os.path.join(os.path.dirname(__file__), "..", "humble_bundles.json")
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 print("🔍 Scraping Humble Choice bundles from AppsolutelyWonderful and Humble.com...")
