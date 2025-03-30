@@ -1,5 +1,3 @@
-name: Update Humble Bundles JSON
-
 on:
   schedule:
     - cron: "0 9 1 * *"  # 1st of every month at 09:00 UTC
