@@ -1,7 +1,7 @@
 on:
   schedule:
-    - cron: "0 9 1 * *"  # 1st of every month at 09:00 UTC
-  workflow_dispatch:     # Allows manual triggering
+    - cron: "0 9 1 * *"
+  workflow_dispatch:
     inputs:
       force:
         description: "Force run?"
@@ -13,6 +13,8 @@ name: Update Humble Bundle JSON
 jobs:
   update:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.STEAM_BUNDLE_CHECKER_UPDATE_JSON }}
 
     steps:
       - name: 📥 Checkout repo
@@ -32,8 +34,6 @@ jobs:
         run: python scraper/update_bundles.py
 
       - name: 📄 Commit updated JSON (if changed)
-        env:
-          GH_TOKEN: ${{ secrets.STEAM_BUNDLE_CHECKER_UPDATE_JSON }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
