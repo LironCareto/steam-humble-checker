@@ -13,9 +13,6 @@ name: Update Humble Bundle JSON
 jobs:
   update:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: scraper
 
     steps:
       - name: 📥 Checkout repo
@@ -32,7 +29,7 @@ jobs:
         run: pip install requests beautifulsoup4
 
       - name: 🔁 Run bundle updater
-        run: python update_bundles.py
+        run: python scraper/update_bundles.py
 
       - name: 📤 Commit updated JSON (if changed)
         run: |
