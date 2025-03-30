@@ -1,51 +1,7 @@
 on:
-<<<<<<< HEAD:.github/workflows/update-json.yml
-    schedule:
-      - cron: "0 9 1 * *"
-    workflow_dispatch:
-      inputs:
-        force:
-          description: "Force run?"
-          required: false
-          default: "false"
-  
-  name: Update Humble Bundle JSON
-  
-  jobs:
-    update:
-      runs-on: ubuntu-latest
-      env:
-        GH_TOKEN: ${{ secrets.STEAM_BUNDLE_CHECKER_UPDATE_JSON }}
-  
-      steps:
-        - name: 📥 Checkout repo
-          uses: actions/checkout@v3
-          with:
-            fetch-depth: 0
-  
-        - name: 🐍 Set up Python
-          uses: actions/setup-python@v4
-          with:
-            python-version: '3.x'
-  
-        - name: 📦 Install dependencies
-          run: pip install requests beautifulsoup4
-  
-        - name: 🔁 Run bundle updater
-          run: python scraper/update_bundles.py
-  
-        - name: 📄 Commit updated JSON (if changed)
-          run: |
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
-            git add humble_bundles.json
-            git diff --quiet && git diff --staged --quiet || git commit -m "🔄 Monthly update of humble_bundles.json"
-            git push
-=======
   schedule:
-    - cron: "0 9 1 * *"
-  workflow_dispatch:
+    - cron: "0 9 1 * *"  # 1st of every month at 09:00 UTC
+  workflow_dispatch:     # Allows manual triggering
     inputs:
       force:
         description: "Force run?"
@@ -61,7 +17,7 @@ jobs:
       GH_TOKEN: ${{ secrets.STEAM_BUNDLE_CHECKER_UPDATE_JSON }}
 
     steps:
-      - name: 📥 Checkout repo
+      - name: 📅 Checkout repo
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -71,7 +27,7 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: 📦 Install dependencies
+      - name: 📆 Install dependencies
         run: pip install requests beautifulsoup4
 
       - name: 🔁 Run bundle updater
@@ -85,4 +41,3 @@ jobs:
           git add humble_bundles.json
           git diff --quiet && git diff --staged --quiet || git commit -m "🔄 Monthly update of humble_bundles.json"
           git push
->>>>>>> c958c55a50863b7475b45fe6e06c7661c60f893d:.github/workflows/update-bundles.yml
