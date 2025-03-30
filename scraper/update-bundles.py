@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import json
 
 SOURCE_URL = "https://appsolutelywonderful.com/humblechoice"
-OUTPUT_FILE = "humble_bundles.json"
+OUTPUT_FILE = "../humble_bundles.json"
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 print("🔍 Scraping Humble Choice bundles from AppsolutelyWonderful...")
