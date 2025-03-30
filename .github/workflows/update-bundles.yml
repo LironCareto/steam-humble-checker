@@ -33,7 +33,7 @@ jobs:
 
       - name: 📄 Commit updated JSON (if changed)
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ STEAM_BUNDLE_CHECKER_UPDATE_JSON }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
