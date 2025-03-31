@@ -1,4 +1,4 @@
-// content.js
+ content.js
 const DATA_URL = "https://raw.githubusercontent.com/LironCareto/steam-humble-checker/refs/heads/main/humble_bundles.json";
 
 function normalizeTitle(title) {
@@ -72,4 +72,4 @@ window.addEventListener('load', () => {
       .then(json => checkAndTagGames(json))
       .catch(err => console.error("Failed to load humble bundles:", err));
   }, 1000);
-});
+};
